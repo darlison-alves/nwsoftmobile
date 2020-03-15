@@ -1,19 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import List from './src/pages/List-tasks';
+import { Index } from './src/pages';
+import { Datails } from './src/components/details/details';
+import { Form } from './src/components/login/Form';
+
+import AppNavigator from './src/navegation/AppNavigator'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+  return <AppNavigator />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

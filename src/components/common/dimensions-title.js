@@ -11,7 +11,7 @@ const heightPercentageToDP = heightPercent => {
     return PixelRatio.roundToNearestPixel(screenHeight * parseFloat(heightPercent) / 100)
 }
 
-const Tile = styled.View`
+export const Tile = styled.View`
     width: ${widthPercentageToDP('98%')},
     height: ${heightPercentageToDP('10%')}
 `
