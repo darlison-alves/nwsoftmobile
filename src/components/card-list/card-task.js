@@ -2,9 +2,9 @@ import React from 'react';
 
 import { ContainerCard, CardBody, CardTitle, CardDescription, CardDescriptionBody, CardSubDescriptionBody, CardSubDescription, CardFooterText } from "./styles/card-styles";
 
-export function CardTask() {
+export function CardTask({ onClick }) {
     return (
-        <ContainerCard>
+        <ContainerCard >
             <CardBody>
                 <CardTitle>Title</CardTitle>
                 <CardDescriptionBody>

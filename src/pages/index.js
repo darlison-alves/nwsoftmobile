@@ -12,10 +12,12 @@ export class Index extends React.Component {
     };
 
     render() {
+
+
         return (
             <IndexContainer>
                 <IndexContent>
-                    <ListTasks />
+                    <ListTasks {...this.props} />
                 </IndexContent>
             </IndexContainer >
         )

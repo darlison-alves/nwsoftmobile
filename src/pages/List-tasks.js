@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Animated } from 'react-native';
+import { ScrollView, Animated, TouchableOpacity } from 'react-native';
 import { Header } from '../components/common/header';
 import { Header_Maximum_Height, Header_Minimum_Height } from '../defaults/constants';
 import { TextHeaderBody, ContainerHeader } from '../components/common/styles/list-style';
@@ -15,6 +15,9 @@ export default class ListTasks extends Component {
     }
 
     render() {
+
+        const { navigation } = this.props;
+
         const AnimateHeaderBackgroundColor = this.AnimatedHeaderValue.interpolate({
             inputRange: [0, Header_Maximum_Height - Header_Minimum_Height],
             outputRange: ['#003f5c', '#003f5c'],
@@ -49,21 +52,24 @@ export default class ListTasks extends Component {
                         { nativeEvent: { contentOffset: { y: this.AnimatedHeaderValue } } },
                     ])}>
                     {/* Put all your Component here inside the ScrollView */}
+                    <TouchableOpacity onPress={() => navigation.navigate('Details', {})} >
+                        <CardTask />
+                    </TouchableOpacity>
 
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
-                    <CardTask />
+
+                    <TouchableOpacity onPress={() => navigation.navigate('Login', {})} >
+                        <CardTask />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => navigation.navigate('Details', {})} >
+                        <CardTask />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => navigation.navigate('Details', {})} >
+                        <CardTask />
+                    </TouchableOpacity>
+
+
 
                 </ScrollView>
 

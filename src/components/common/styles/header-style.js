@@ -28,5 +28,5 @@ export const StyleHeader = StyleSheet.create({
 export const TextHeaderDefault = styled.Text`
     fontWeight:bold;
     fontSize:25px;
-    color: #fb5b5a;
+    color: #fb5b5a
 `

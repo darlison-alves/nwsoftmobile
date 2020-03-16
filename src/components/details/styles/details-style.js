@@ -4,7 +4,7 @@ import { Colors } from '../../../defaults/constants';
 export const ContainerDetails = styled.View`
     backgroundColor: ${Colors.white};
     width: 100%;
-    height: 80%;
+    height: 100%;
     bottom: 0;
     position: absolute;
     justifyContent: center;
@@ -13,10 +13,15 @@ export const ContainerDetails = styled.View`
     borderTopRightRadius: 30px;
 `
 
+export const DescriptionBody = styled.View`
+    position: absolute;
+    alignItems: center;
+    top: 0px;;
+`
 
-export const Description = styled.Text`
+export const Description = styled.Text`    
     padding: 0px 40px;
-    lineHeight: 30;
+    lineHeight: 20px;
     font-size: 16px;
     color: ${Colors.grey}
 `
@@ -43,12 +48,24 @@ export const HeaderDetail = styled.View`
     top:0
     
 `
+export const TextViewTitle = styled.View`
+    flexDirection: column;
+
+`
 
 export const HeaderDetailText = styled.Text`
     font-size: 22px;
     width: 70%
     marginLeft: 10px;
-    fontWeight: bold;
+    fontWeight: bold;    
+`
+
+export const HeaderDetailTextSub = styled.Text`
+    position: absolute;
+    font-size: 16px;
+    color: ${Colors.lightgrey};
+    bottom: 0;
+    left: 30%;
 `
 
 export const HeaderDetailCard = styled.View`

@@ -1,9 +1,8 @@
-import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { Index } from '../pages';
-import { Datails } from '../components/details/details';
 import { Login } from '../pages/Login';
+import { Details } from '../pages/Details';
 
 const config = Platform.select({
     web: { headerMode: 'none' },
@@ -13,10 +12,10 @@ const config = Platform.select({
 const HomeStack = createStackNavigator(
     {
         Home: Index,
-        Datails: Datails,
+        Details: Details,
         Login: Login
     },
-    { ...config, initialRouteName: 'Login' }
+    { ...config, initialRouteName: 'Details' }
 )
 
 HomeStack.path = '';
