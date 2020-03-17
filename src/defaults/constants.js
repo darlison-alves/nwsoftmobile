@@ -1,8 +1,6 @@
 export const Header_Maximum_Height = 150;
 export const Header_Minimum_Height = 50;
 
-
-
 const tintColor = '#2f95dc';
 
 export const Colors = {
@@ -22,3 +20,6 @@ export const Colors = {
     lightgrey: '#999',
     purple: '#733DBE'
 };
+
+
+export const defaullTextError = '* Campo não pode se vazio.';

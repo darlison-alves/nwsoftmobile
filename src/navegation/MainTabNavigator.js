@@ -3,6 +3,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { Index } from '../pages';
 import { Login } from '../pages/Login';
 import { Details } from '../pages/Details';
+import { RegisterTask } from '../pages/register-task';
 
 const config = Platform.select({
     web: { headerMode: 'none' },
@@ -13,9 +14,10 @@ const HomeStack = createStackNavigator(
     {
         Home: Index,
         Details: Details,
-        Login: Login
+        Login: Login,
+        Register: RegisterTask
     },
-    { ...config, initialRouteName: 'Details' }
+    { ...config, initialRouteName: 'Login' }
 )
 
 HomeStack.path = '';

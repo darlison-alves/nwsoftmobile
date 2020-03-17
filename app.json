@@ -25,6 +25,16 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
-  }
+    },
+    "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyB01CL67unZ2gvobdOlKOJ2_IjH38uT4Ig"
+        }
+      }
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "NWSoft",
+  "name": "NwSoft"
 }
