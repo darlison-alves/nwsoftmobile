@@ -1,6 +1,30 @@
-# nwsoftmobile
+# APP MOBILE
 
+## Rodar projeto
+
+Instalar dependências do projeto com npm
+```sh
+$ npm install
+```
+Instalar dependencia necessarias
+
+```sh
 npm install -g react-native-cli
 
-react-native link react-native-vector-icons
-react-native link react-native-maps
+react-native link
+```
+
+Iniciar
+```sh
+$ npm web
+```
+
+## Lembreta
+No arquiva abaixo sei ip da onde api esta rodando:
+```
+|---src
+    |--api
+        |--default
+            |---url_backend.js
+```
+            
