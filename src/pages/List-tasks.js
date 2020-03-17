@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Animated, TouchableOpacity } from 'react-native';
+import { ScrollView, Animated, TouchableOpacity, Text, View } from 'react-native';
 import { Header } from '../components/common/header';
 import { Header_Maximum_Height, Header_Minimum_Height } from '../defaults/constants';
 import { TextHeaderBody, ContainerHeader } from '../components/common/styles/list-style';
@@ -16,7 +16,7 @@ export default class ListTasks extends Component {
 
     render() {
 
-        const { navigation } = this.props;
+        const { navigation, tasks = [] } = this.props;
 
         const AnimateHeaderBackgroundColor = this.AnimatedHeaderValue.interpolate({
             inputRange: [0, Header_Maximum_Height - Header_Minimum_Height],
@@ -45,6 +45,7 @@ export default class ListTasks extends Component {
 
         return (
             <ContainerHeader >
+
                 <ScrollView
                     scrollEventThrottle={16}
                     contentContainerStyle={{ paddingTop: Header_Maximum_Height, borderTopLeftRadius: 100, borderTopRightRadius: 50 }}
@@ -52,26 +53,21 @@ export default class ListTasks extends Component {
                         { nativeEvent: { contentOffset: { y: this.AnimatedHeaderValue } } },
                     ])}>
                     {/* Put all your Component here inside the ScrollView */}
-                    <TouchableOpacity onPress={() => navigation.navigate('Details', {})} >
-                        <CardTask />
-                    </TouchableOpacity>
 
-
-                    <TouchableOpacity onPress={() => navigation.navigate('Login', {})} >
-                        <CardTask />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => navigation.navigate('Details', {})} >
-                        <CardTask />
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => navigation.navigate('Details', {})} >
-                        <CardTask />
-                    </TouchableOpacity>
-
-
+                    {
+                        tasks.map(task => (
+                            <TouchableOpacity key={task._id} onPress={() => navigation.push('Details', task)} >
+                                <CardTask task={task} />
+                            </TouchableOpacity>)
+                        )
+                    }
 
                 </ScrollView>
+
+                {!tasks.length &&
+                    (<View style={{ flex: 5, alignContent: 'center', alignItems: 'center', justifyContent: 'center' }} >
+                        <TextHeaderBody  > Sem tarefas no momento... </TextHeaderBody>
+                    </View>)}
 
                 <Header imageOpacity={imageOpacity} imageTranslate={imageTranslate} AnimateHeaderHeight={AnimateHeaderHeight} AnimateHeaderBackgroundColor={AnimateHeaderBackgroundColor} />
             </ContainerHeader>

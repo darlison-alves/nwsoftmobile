@@ -1,6 +1,11 @@
 import React from 'react';
+import Axios from 'axios';
+import { AsyncStorage, Alert } from 'react-native'
+
 import FormLogin from '../components/login/Form';
 import { Loader } from '../components/common/Loader'
+import { BACKEND } from '../defaults/url_backend';
+import { apiAuth } from '../api/apitask';
 
 export class Login extends React.Component {
     state = {
@@ -13,10 +18,16 @@ export class Login extends React.Component {
 
     login(data) {
         this.setState({ loading: true })
-        setTimeout(() => {
-            this.setState({ loading: false })
-            this.props.navigation.navigate('Home')
-        }, 5000)
+        apiAuth().post(`/singIn`, data)
+            .then(async res => {
+                await AsyncStorage.setItem("@jwt", res.data.token)
+                this.setState({ loading: false })
+                this.props.navigation.navigate('Home')
+            }).catch(err => {
+                console.log("err", err.response)
+                this.setState({ loading: false })
+                Alert.alert('Login', 'email ou senha invalido!')
+            })
     }
 
     render() {

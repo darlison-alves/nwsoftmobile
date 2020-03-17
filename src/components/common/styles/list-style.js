@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Platform } from 'react-native';
 import Constants from 'expo-constants'
+import { Colors } from '../../../defaults/constants';
 
 export const ContainerHeader = styled.View`
     flex: 1;
@@ -11,7 +12,7 @@ export const ContainerHeader = styled.View`
 
 export const TextHeaderBody = styled.Text`
     text-align: center;
-    color: #000;
+    color: ${Colors.lightgrey}
     font-size: 18px;
     margin: 5px;
     padding: 7px;

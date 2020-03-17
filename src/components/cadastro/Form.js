@@ -1,15 +1,16 @@
 import React from 'react';
 import { withFormik } from 'formik';
 import * as yup from 'yup';
-import { ScrollView, KeyboardAvoidingView, Platform, TextInput } from 'react-native';
-import { FormContainer, FormTextInput, InputAreaView, TextBtnCadastro, Title, FormTextInputError } from './styles/form-style';
+import { ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { FormContainer, FormTextInput, InputAreaView, TextBtnCadastro, FormTextInputError } from './styles/form-style';
 import { InputView, TouchableOpacity } from '../login/styles/login-styles';
 import { DatePickerCustom } from './date-picker';
 import { defaullTextError } from '../../defaults/constants';
 
-function FormTask({ setFieldValue, handleSubmit, errors, values, setEndereco, ...props }) {
+export function FormTask({ setFieldValue, handleSubmit, errors, values, setEndereco, ...props }) {
 
     const cb = (endereco) => {
+        setFieldValue('endereco.cep', endereco.cep)
         setFieldValue('endereco.logradouro', endereco.logradouro)
         setFieldValue('endereco.complemento', endereco.complemento)
         setFieldValue('endereco.bairro', endereco.bairro)
@@ -32,19 +33,20 @@ function FormTask({ setFieldValue, handleSubmit, errors, values, setEndereco, ..
 
                     <InputAreaView>
                         <FormTextInput
+                            value={values.descricao}
                             onChangeText={text => setFieldValue('descricao', text)}
                             placeholder="DESCRIÇÃO DA TAREFA..." numberOfLines={4} multiline={true} />
                     </InputAreaView>
 
                     <FormTextInputError>{errors && errors.datahora}</FormTextInputError>
                     <InputView>
-                        <DatePickerCustom onChangeDate={(data) => setFieldValue('datahora', `${data.date}`)} />
+                        <DatePickerCustom initialValues={{ date: values.datahora }} onChangeDate={(data) => setFieldValue('datahora', `${data.date}`)} />
                     </InputView>
 
                     <InputView>
                         <FormTextInput keyboardType="numeric" placeholder="CEP..."
                             onEndEditing={ev => {
-                                setFieldValue('endereco.cep', ev.nativeEvent.text)
+                                // setFieldValue('endereco.cep', ev.nativeEvent.text)
                                 setEndereco(ev.nativeEvent.text, cb)
                             }} />
                     </InputView>
@@ -58,7 +60,9 @@ function FormTask({ setFieldValue, handleSubmit, errors, values, setEndereco, ..
                     </InputView>
 
                     <InputView>
-                        <FormTextInput placeholder="NÚMERO..."
+                        <FormTextInput
+                            value={values.endereco.numero}
+                            placeholder="NÚMERO..."
                             onChangeText={text => setFieldValue('endereco.numero', text)} />
                     </InputView>
 
@@ -101,9 +105,7 @@ export default withFormik({
         titulo: '',
         descricao: '',
         datahora: '',
-        endereco: {
-            cep: ""
-        },
+        endereco: {},
         ...props.newvalues
     }),
     validationSchema: yup.object().shape({
@@ -111,7 +113,7 @@ export default withFormik({
         datahora: yup.string().required(defaullTextError),
         //'endereco.logradouro': yup.string().required(defaullTextError),
     }),
-    handleSubmit: (values, props) => {
-        console.log(values);
+    handleSubmit: (values, formikprops) => {
+        formikprops.props.register(values);
     }
 })(FormTask)

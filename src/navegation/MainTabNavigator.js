@@ -4,6 +4,7 @@ import { Index } from '../pages';
 import { Login } from '../pages/Login';
 import { Details } from '../pages/Details';
 import { RegisterTask } from '../pages/register-task';
+import { EditTask } from '../pages/edit-task';
 
 const config = Platform.select({
     web: { headerMode: 'none' },
@@ -15,9 +16,10 @@ const HomeStack = createStackNavigator(
         Home: Index,
         Details: Details,
         Login: Login,
-        Register: RegisterTask
+        Register: RegisterTask,
+        EditTask: EditTask
     },
-    { ...config, initialRouteName: 'Login' }
+    { ...config, initialRouteName: 'Home' }
 )
 
 HomeStack.path = '';

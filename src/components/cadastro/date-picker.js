@@ -2,8 +2,8 @@ import React from 'react';
 import DatePicker from 'react-native-datepicker';
 import { Colors } from '../../defaults/constants';
 
-export function DatePickerCustom({ onChangeDate }) {
-    const [data, setData] = React.useState({ date: "", time: '' })
+export function DatePickerCustom({ onChangeDate, initialValues = { date: "", time: "" } }) {
+    const [data, setData] = React.useState(initialValues)
 
     return <DatePicker
         style={{ width: '100%' }}

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Animated, Text } from 'react-native'
-import { TextHeaderDefault, StyleHeader } from './styles/header-style';
+import { Animated } from 'react-native'
 
-import nwbg from '../../assets/images/bg5.png'
+import { TextHeaderDefault, StyleHeader } from './styles/header-style';
 
 export function Header({ text = "LISTA TAREFAS", imageOpacity, imageTranslate, AnimateHeaderHeight, AnimateHeaderBackgroundColor }) {
 
@@ -22,6 +21,8 @@ export function Header({ text = "LISTA TAREFAS", imageOpacity, imageTranslate, A
             <TextHeaderDefault >
                 {text}
             </TextHeaderDefault>
+
+
         </Animated.View>
     )
 }

@@ -1,34 +1,37 @@
 import React from 'react';
-import { View, ScrollView, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
+import Moment from 'moment'
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import { ContainerDetails, HeaderDetail, HeaderDetailCard, HeaderDetailCardText, HeaderDetailCardTextSub, HeaderDetailText, ContainerTextHour, TextHour, Description, TextViewTitle, HeaderDetailTextSub, DescriptionBody } from './styles/details-style';
 
-export function DetailsBody() {
+export function DetailsBody({ task }) {
+    Moment.locale('pt');
+    const endereco = task.endereco
+
     return (
         <ContainerDetails>
             <HeaderDetail>
                 <HeaderDetailCard>
-                    <HeaderDetailCardText>25</HeaderDetailCardText>
-                    <HeaderDetailCardTextSub>JAN</HeaderDetailCardTextSub>
+                    <HeaderDetailCardText>{Moment(task.datahora).format('DD')}</HeaderDetailCardText>
+                    <HeaderDetailCardTextSub>{Moment(task.datahora).format('MMM')}</HeaderDetailCardTextSub>
                 </HeaderDetailCard>
 
                 <HeaderDetailText>
-                    TITLE
+                    {task.titulo}
                 </HeaderDetailText>
-                <HeaderDetailTextSub >14:04</HeaderDetailTextSub>
+                <HeaderDetailTextSub ><Icon name="clockcircleo" /> {Moment(task.datahora).format('HH:mm')}</HeaderDetailTextSub>
             </HeaderDetail>
 
             <DescriptionBody>
                 <ScrollView style={{ maxHeight: '70%', marginTop: '30%' }}>
                     <Description>
-                        DESCRICAO DESCRICAODESCRICAO DESCRICAODESCRICAODESCRICAO DESCRICAODESCRICAO
-                        DESCRICAODESCRICAO
-                        DESCRICAO DESCRICAODESCRICAO DESCRICAODESCRICAODESCRICAO DESCRICAODESCRICAO
+                        {task.descricao}
                     </Description>
                 </ScrollView>
                 <Text style={{ flex: 1, position: 'relative', top: 0, fontWeight: 'bold', paddingTop: 10 }} >ENDEREÇO:</Text>
                 <Text style={{ fontSize: 18, paddingLeft: 40, flex: 1, position: 'relative', top: 0, fontWeight: 'bold', paddingTop: 10 }} >
-                    Rua / AV: São Vicente de Paulo, 88 - Araturi , CAUCAIA - 60340-310</Text>
+                    Rua / AV: {endereco.logradouro}, {endereco.numero} - {endereco.bairro} , {endereco.localidade} - {endereco.cep} </Text>
 
             </DescriptionBody>
 
