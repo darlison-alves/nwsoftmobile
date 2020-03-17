@@ -7,11 +7,11 @@ import { LoginContainer, InputView, InputText, TouchableOpacity, TextBtnLogin, L
 import { defaullTextError } from '../../defaults/constants';
 import { FormTextInputError } from '../cadastro/styles/form-style';
 
-export function Form({ setFieldValue, handleSubmit, errors }) {
+export function Form({ setFieldValue, handleSubmit, errors, titulo = "NW", subtitulo = "Soft", textbtn = "LOGIN" }) {
     return (
         <LoginContainer>
             <KeyboardAvoidingView style={{ width: '100%', alignContent: 'center', alignItems: 'center' }} behavior="padding" >
-                <Logo>NW<LogoSub>Soft</LogoSub></Logo>
+                <Logo>{titulo}<LogoSub>{subtitulo}</LogoSub></Logo>
                 <FormTextInputError>{errors.email}</FormTextInputError>
                 <InputView>
                     <InputText placeholder="Email..." onChangeText={text => setFieldValue('email', text)} />
@@ -23,7 +23,7 @@ export function Form({ setFieldValue, handleSubmit, errors }) {
                 </InputView>
             </KeyboardAvoidingView>
             <TouchableOpacity onPress={handleSubmit}>
-                <TextBtnLogin>LOGIN</TextBtnLogin>
+                <TextBtnLogin>{textbtn}</TextBtnLogin>
             </TouchableOpacity>
         </LoginContainer>
     )

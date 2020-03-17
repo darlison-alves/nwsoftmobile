@@ -16,7 +16,7 @@ react-native link
 
 Iniciar
 ```sh
-$ npm web
+$ npm web or npm run android or nom run ios
 ```
 
 ## Lembreta

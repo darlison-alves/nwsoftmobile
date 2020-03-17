@@ -5,6 +5,7 @@ import { Login } from '../pages/Login';
 import { Details } from '../pages/Details';
 import { RegisterTask } from '../pages/register-task';
 import { EditTask } from '../pages/edit-task';
+import { SingUp } from '../pages/Singup';
 
 const config = Platform.select({
     web: { headerMode: 'none' },
@@ -17,9 +18,10 @@ const HomeStack = createStackNavigator(
         Details: Details,
         Login: Login,
         Register: RegisterTask,
-        EditTask: EditTask
+        EditTask: EditTask,
+        SingUp: SingUp
     },
-    { ...config, initialRouteName: 'Home' }
+    { ...config, initialRouteName: 'SingUp' }
 )
 
 HomeStack.path = '';
